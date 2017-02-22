@@ -1,16 +1,8 @@
-# Documentation: http://docs.travis-ci.com/user/languages/julia/
-language: julia
-os:
-  - linux
-  - osx
-julia:
-  - release
-  - nightly
+using jsos
+using Base.Test
 
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-        sudo apt-get install liblapack-dev libblas-dev;
-    fi
 
-notifications:
-  email: false
+# @testset "Message" begin
+      a = 1
+#     @test a == 1
+# end
