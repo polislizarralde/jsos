@@ -2,9 +2,8 @@
 # SOSDEMO2 --- Lyapunov Function Search
 # Section 3.2 of SOSTOOLS User's Manual
 
-facts("SOSDEMO2") do
 for solver in sdp_solvers
-context("With solver $(typeof(solver))") do
+
   @polyvar x[1:3]
 
   # Constructing the vector field dx/dt = f
@@ -24,9 +23,15 @@ context("With solver $(typeof(solver))") do
   P = dot(differentiate(V, x), f)*(x[3]^2+1)
   @polyconstraint m P <= 0
 
-  status = solve(m)
+  status = solve(m);
 
-  @fact status --> :Optimal
+  flyapunov = getvalue(V)
+  println("Lyapunov function using $(typeof(solver))")
 
-  @fact removemonomials(getvalue(V), Z) --> zero(Polynomial{true, Float64})
-end; end; end
+  println(flyapunov)
+  println(status)
+
+  #status --> :Optimal
+
+  #removemonomials(getvalue(V), Z) --> zero(Polynomial{true, Float64})
+end

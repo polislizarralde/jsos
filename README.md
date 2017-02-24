@@ -11,6 +11,7 @@ julia> Pkg.clone("git://github.com/JuliaOpt/PolyJuMP.jl")
 julia> Pkg.clone("git://github.com/JuliaOpt/SumOfSquares.jl")
 julia> Pkg.add("FactCheck")
 julia> Pkg.add("SCS")
+julia> Pkg.add("CSDP")
 julia> Pkg.update()
 ```
 

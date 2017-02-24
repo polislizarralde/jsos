@@ -11,6 +11,7 @@ end
 
 mos = try_import(:Mosek)
 scs = try_import(:SCS)
+csdp = try_import(:CSDP)
 
 isscs(solver) = contains(string(typeof(solver)),"SCSSolver")
 
@@ -24,3 +25,5 @@ mos && push!(sdp_solvers, Mosek.MosekSolver(LOG=0))
 # Need 54000 iterations for sosdemo3 to pass on Linux 64 bits
 # With 55000, sosdemo3 passes for every platform except Windows 64 bits on AppVeyor
 scs && push!(sdp_solvers, SCS.SCSSolver(eps=1e-6, max_iters=60000, verbose=0))
+
+csdp && push!(sdp_solvers, CSDP.CSDPSolver(printlevel=1, maxiter=60000, axtol=1.0e-8, atytol=1.0e-8))
