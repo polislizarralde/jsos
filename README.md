@@ -15,6 +15,18 @@ julia> Pkg.add("CSDP")
 julia> Pkg.update()
 ```
 
+To interact with plots please install:
+
+```julia
+julia> Pkg.update()
+julia> Pkg.add("IJulia")
+julia> Pkg.add("Interact")
+julia> Pkg.add("Reactive")
+julia> Pkg.add("Compose")
+julia> Pkg.add("Gadfly")
+julia> Pkg.add("PyPlot")
+julia> Pkg.add("Winston")
+```
 # Quick Start
 
 Download the code of this repository:
